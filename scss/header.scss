@@ -1,0 +1,51 @@
+.header {
+  background-color: $colorWhite;
+
+  .logo {
+    width: 120px;
+  }
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.menu {
+}
+
+.menu-list {
+  display: flex;
+  gap: 30px;
+}
+
+.menu-link {
+  font-weight: 500;
+  position: relative;
+
+  @include before {
+    width: 0%;
+    height: 1px;
+    background-color: $colorSimple;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    margin: 0 auto;
+  }
+
+  &:hover,
+  &--active {
+    &::before {
+      width: 100%;
+    }
+  }
+}
+
+.header__controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}

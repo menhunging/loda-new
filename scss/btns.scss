@@ -1,0 +1,55 @@
+.btn {
+  -webkit-appearance: none;
+  @include border-radius(0);
+  @include transition(all 0.3s);
+  @include border-radius(50px);
+  position: relative;
+  color: $colorWhite;
+  text-align: center;
+  font-family: $fontMain;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  background-color: $colorSite;
+
+  &__icon {
+    fill: $colorWhite;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    top: -1px;
+    pointer-events: none;
+  }
+
+  &:hover {
+    background-color: $colorSiteHover;
+  }
+}
+
+.btn-circle {
+  @include transition(background-color 0.3s);
+  @include border-radius(50%);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $colorSite;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover {
+    background-color: $colorSiteHover;
+  }
+}

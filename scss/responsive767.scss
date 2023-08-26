@@ -1,0 +1,284 @@
+@media (max-width: 767px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .btn {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 7px;
+  }
+
+  body {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .header {
+    .logo {
+      width: 68px;
+    }
+  }
+
+  .btn-circle {
+    width: 26px;
+    height: 26px;
+
+    svg {
+      width: 14px;
+    }
+  }
+  .burger {
+    width: 24px;
+    height: 14px;
+
+    &--opened {
+      .burger-line {
+        &:nth-child(1) {
+          @include transform(rotate(45deg) translate(5px, 3px));
+        }
+        &:nth-child(3) {
+          @include transform(rotate(-45deg) translate(5px, -4px));
+        }
+      }
+    }
+  }
+
+  .burger-line {
+    height: 2px;
+  }
+
+  .header__controls {
+    gap: 8px;
+  }
+
+  .header__inner {
+    padding: 12px 0;
+  }
+
+  .grettings-slider {
+    .picture {
+      height: 730px;
+    }
+  }
+
+  .grettings-slider__item {
+    height: calc(100vh - 50px);
+    max-height: 730px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 17px 0;
+  }
+
+  .grettings-slider__text {
+    height: auto;
+    padding: 16px;
+    gap: 16px;
+    letter-spacing: 0.42px;
+
+    .caption {
+      font-size: 24px;
+      line-height: 28px;
+      letter-spacing: 0.72px;
+    }
+
+    .btn {
+      max-width: 236px;
+    }
+  }
+
+  .grettings-slider .swiper-controls {
+    right: 15px;
+    bottom: auto;
+    top: 15px;
+    gap: 10px;
+  }
+
+  .swiper-controls .swiper-button-prev,
+  .swiper-controls .swiper-button-next {
+    width: 10px;
+    height: 10px;
+  }
+
+  .grettings-slider .swiper-controls {
+    padding: 0 5px;
+    height: 20px;
+  }
+
+  .swiper-pagination-bullets .swiper-pagination-bullet {
+    width: 8px;
+  }
+
+  .main-catalog__item {
+    padding: 0;
+    padding-top: calc(390 / 767 * 100%);
+    height: auto;
+  }
+
+  .main-catalog__row {
+    display: block;
+
+    .picture {
+      width: 100%;
+      height: 100%;
+      @include border-radius(25px);
+    }
+  }
+
+  .main-catalog__col {
+    & + .main-catalog__col {
+      margin-top: 16px;
+    }
+  }
+
+  .main-catalog__name {
+    font-size: 16px;
+    line-height: 18px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
+
+  .main-catalog__col {
+    gap: 16px;
+  }
+
+  .caption {
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 1.2px;
+  }
+
+  .btn-more {
+    width: 50px;
+    height: 50px;
+    border-width: 8px;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .main-catalog .btn {
+    margin-top: 24px;
+  }
+
+  .main-catalog {
+    padding: 38px 0;
+  }
+
+  .main-state {
+    padding: 38px 0;
+  }
+
+  .main-state__list {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .main-state__num {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .main-state__item {
+    gap: 16px;
+    padding: 24px;
+    @include border-radius(30px);
+  }
+
+  .footer {
+    .logo {
+      width: 68px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 24px;
+    }
+  }
+
+  .footer-top__inner {
+    width: 100%;
+    position: relative;
+    padding-top: 69px;
+    padding-bottom: 0;
+  }
+
+  .footer-top__left {
+    order: 2;
+    width: 100%;
+  }
+
+  .footer__controls {
+    margin-top: 24px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .footer-top__right {
+    border-top: solid 1px $colorSimple;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: 24px;
+    width: 100%;
+    order: 1;
+    gap: 19px;
+
+    a {
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    ul {
+      display: none;
+    }
+  }
+
+  .footer-bottom {
+    border: 0;
+    padding: 24px 0;
+  }
+
+  .footer-bottom__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .footer-bottom__text {
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 22px;
+
+    &:nth-child(1) {
+      order: 3;
+      max-width: 100%;
+      font-size: 12px;
+      line-height: 22px;
+      border-top: solid 1px $colorSimple;
+      padding-top: 8px;
+    }
+    &:nth-child(2) {
+      margin: 0;
+      order: 1;
+    }
+    &:nth-child(3) {
+      order: 2;
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+}
