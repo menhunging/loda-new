@@ -10,6 +10,14 @@ $(document).ready(function () {
     $(".thisYear").text(date.getFullYear());
   }
 
+  if ($(".text-block").length > 0) {
+    moveTitle();
+  }
+
+  if ($(".line-text").length > 0) {
+    moveBtn();
+  }
+
   if ($(".grettings-slider").length > 0) {
     const grettingsSlider = new Swiper(".grettings-slider", {
       slidesPerView: 1,
@@ -26,54 +34,36 @@ $(document).ready(function () {
     });
   }
 
-  if ($(".products__slider").length > 0) {
-    const sliders = document.querySelectorAll(".products__slider");
-    let mySwipers = [];
+  if ($(".material-slider").length > 0) {
+    const grettingsSlider = new Swiper(".material-slider", {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      speed: 500,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+      },
+    });
 
-    function sliderinit() {
-      sliders.forEach((slider, index) => {
-        if (!slider.swiper) {
-          mySwipers[index] = new Swiper(slider, {
-            slidesPerView: 4,
-            spaceBetween: 32,
-            navigation: {
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
-            },
-            on: {
-              init: function (swiper) {},
-              slideChange: function (swiper) {},
-            },
-            breakpoints: {
-              320: {
-                slidesPerView: 1,
-                spaceBetween: 16,
-              },
-              350: {
-                slidesPerView: 2,
-                spaceBetween: 16,
-              },
-              740: {
-                slidesPerView: 3,
-              },
-              1024: {
-                slidesPerView: 4,
-              },
-              1200: {
-                slidesPerView: 4,
-              },
-              1441: {
-                slidesPerView: 4.68,
-              },
-            },
-          });
-        } else {
-          return;
-        }
-      });
-    }
+    grettingsSlider.on("slideChange", function (swiper) {
+      $(".main-materials__item")
+        .removeClass("active")
+        .eq(swiper.activeIndex)
+        .addClass("active");
+    });
 
-    sliders.length && sliderinit();
+    $(".main-materials__item").on("click", function () {
+      let index = $(this).attr("data-item");
+      grettingsSlider.slideTo(index);
+
+      $(".main-materials__item")
+        .removeClass("active")
+        .eq(index)
+        .addClass("active");
+    });
   }
 
   if ($("select").length > 0) {
@@ -85,6 +75,56 @@ $(document).ready(function () {
       });
     });
   }
+
+  // if ($(".products__slider").length > 0) {
+  //   const sliders = document.querySelectorAll(".products__slider");
+  //   let mySwipers = [];
+
+  //   function sliderinit() {
+  //     sliders.forEach((slider, index) => {
+  //       if (!slider.swiper) {
+  //         mySwipers[index] = new Swiper(slider, {
+  //           slidesPerView: 4,
+  //           spaceBetween: 32,
+  //           navigation: {
+  //             nextEl: ".swiper-button-next",
+  //             prevEl: ".swiper-button-prev",
+  //           },
+  //           on: {
+  //             init: function (swiper) {},
+  //             slideChange: function (swiper) {},
+  //           },
+  //           breakpoints: {
+  //             320: {
+  //               slidesPerView: 1,
+  //               spaceBetween: 16,
+  //             },
+  //             350: {
+  //               slidesPerView: 2,
+  //               spaceBetween: 16,
+  //             },
+  //             740: {
+  //               slidesPerView: 3,
+  //             },
+  //             1024: {
+  //               slidesPerView: 4,
+  //             },
+  //             1200: {
+  //               slidesPerView: 4,
+  //             },
+  //             1441: {
+  //               slidesPerView: 4.68,
+  //             },
+  //           },
+  //         });
+  //       } else {
+  //         return;
+  //       }
+  //     });
+  //   }
+
+  //   sliders.length && sliderinit();
+  // }
 
   // ---------------------------------------
 
@@ -137,4 +177,86 @@ $(document).ready(function () {
   // }
 });
 
-$(window).on("resize", function () {});
+$(window).on("resize", function () {
+  if ($(".text-block").length > 0) {
+    moveTitle();
+  }
+
+  if ($(".line-text").length > 0) {
+    moveBtn();
+  }
+});
+
+function moveTitle() {
+  if ($(window).width() < 1024) {
+    if (!$(".text-block").hasClass("move-title")) {
+      moveMobile();
+    }
+  } else {
+    if ($(".text-block").hasClass("move-title")) {
+      moveDesktop();
+    }
+  }
+
+  function moveMobile() {
+    $(".text-block").map(function () {
+      let textBlock = $(this);
+      let textBlockInner = textBlock.find(".text-block__inner");
+      let textBlockContent = textBlock.find(".text-block__content");
+      let caption = textBlockContent.find("h2")[0];
+
+      $(caption).prependTo(textBlockInner);
+      textBlock.addClass("move-title");
+    });
+  }
+
+  function moveDesktop() {
+    $(".text-block").map(function () {
+      let textBlock = $(this);
+      let textBlockInner = textBlock.find(".text-block__inner");
+      let textBlockContent = textBlock.find(".text-block__content");
+      let caption = textBlockInner.find("h2")[0];
+
+      $(caption).prependTo(textBlockContent);
+      textBlock.removeClass("move-title");
+    });
+  }
+}
+
+function moveBtn() {
+  if ($(window).width() < 768) {
+    if (!$(".line-text").hasClass("move-btn")) {
+      moveMobile();
+    }
+  } else {
+    if ($(".line-text").hasClass("move-btn")) {
+      moveDesktop();
+    }
+  }
+
+  function moveMobile() {
+    $(".line-text").map(function () {
+      let textBlock = $(this);
+      let textBlockInner = textBlock.find(".line-text__inner");
+      let textBlockContent = textBlock.find(".line-text__content");
+      let btn = textBlockContent.find(".btn")[0];
+
+      console.log(btn);
+
+      $(btn).appendTo(textBlockInner);
+      textBlock.addClass("move-btn");
+    });
+  }
+
+  function moveDesktop() {
+    $(".line-text").map(function () {
+      let textBlock = $(this);
+      let textBlockInner = textBlock.find(".line-text__inner");
+      let textBlockContent = textBlock.find(".line-text__content");
+      let btn = textBlockInner.find(".btn")[0];
+
+      $(btn).appendTo(textBlockContent);
+      textBlock.removeClass("move-btn");
+    });
+  }
+}

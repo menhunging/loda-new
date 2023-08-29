@@ -36,4 +36,9 @@
   .footer-top__right{
     gap: 16px 100px;
   }
+
+  .text-block__inner{
+    grid-template-columns: minmax(100px, 50%) 1fr;
+    align-items: flex-start;
+  }
 }

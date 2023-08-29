@@ -92,4 +92,120 @@
     max-width: 237px;
     width: 100%;
   }
+
+  .text-block {
+    font-size: 18px;
+    line-height: 24px;
+
+    ul,
+    h4,
+    h3,
+    h2,
+    p {
+      & + * {
+        margin-top: 20px;
+      }
+    }
+
+    li {
+      &::before {
+        top: 10px;
+      }
+
+      & + li {
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .list-section:last-child {
+    padding-bottom: 60px;
+  }
+
+  .list-section .list-section__name {
+    font-size: 19px;
+    line-height: 22px;
+  }
+
+  .list-section .list-section__item {
+    font-size: 18px;
+    line-height: 24px;
+    gap: 12px;
+  }
+
+  .list-section .picture {
+    @include border-radius(30px);
+  }
+
+  .list-section .list-section__list {
+    gap: 20px;
+  }
+
+  .list-section .list-section__list {
+    margin-top: 26px;
+  }
+
+  .main-materials__right {
+    width: calc(100% - 626px);
+  }
+
+  .main-materials__left {
+    max-width: 586px;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .main-materials__item {
+    @include border-radius(30px);
+  }
+
+  .main-materials__item .picture {
+    width: 122px;
+    height: 122px;
+    @include border-radius(30px);
+  }
+
+  .main-materials__material {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .main-materials__list {
+    gap: 9px;
+  }
+
+  .main-materials {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .material-slider .picture {
+    height: 420px;
+  }
+
+  .picture-list {
+    gap: 11px;
+    grid-template-rows: repeat(3, 160px);
+  }
+
+  .line-text {
+    padding: 42px 0;
+  }
+
+  .line-text .picture {
+    width: calc(50% - 20px);
+    max-height: 230px;
+  }
+
+  .line-text .picture {
+    .link-360 {
+      font-size: 38px;
+      line-height: 40px;
+
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
 }

@@ -27,6 +27,34 @@
     position: relative;
     top: -1px;
     pointer-events: none;
+    @include transition(all 0.3s);
+
+    path {
+      @include transition(all 0.3s);
+    }
+  }
+
+  &--full {
+    background-color: transparent;
+    border-color: $colorSite;
+    color: $colorSite;
+
+    svg {
+      path {
+        fill: $colorSite;
+      }
+    }
+
+    &:hover {
+      background-color: $colorSite !important;
+      color: $colorWhite;
+
+      svg {
+        path {
+          fill: $colorWhite;
+        }
+      }
+    }
   }
 
   &:hover {

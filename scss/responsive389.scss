@@ -1,2 +1,11 @@
 @media (max-width: 389px) {
+  .picture-list {
+    gap: 18px;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  .contacts-map__block {
+    padding: 18px;
+  }
 }
