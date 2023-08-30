@@ -187,6 +187,55 @@ $(window).on("resize", function () {
   }
 });
 
+$(window).on("load", function () {
+  setTimeout(() => ymapsLoad(), 500);
+  setTimeout(() => ymaps.ready(init), 1000);
+
+  function ymapsLoad() {
+    var script = document.createElement("script");
+    script.src =
+      "https://api-maps.yandex.ru/2.1/?apikey=0cec76e1-1847-46ed-a96a-c84c0917f2ad&lang=ru_RU";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  }
+
+  function init() {
+    var myMap = new ymaps.Map("map", {
+      center: [55.75249, 37.623205],
+      zoom: 10,
+      controls: false,
+    });
+
+    myMap.controls.remove("searchControl");
+
+    var myPlacemark = new ymaps.Placemark(
+      [55.886521, 37.4368],
+      {},
+      {
+        iconLayout: "default#image",
+        iconImageHref: "../../img/location.svg",
+        iconImageSize: [80, 80],
+        iconImageOffset: [-40, -40],
+      }
+    );
+
+    myMap.geoObjects.add(myPlacemark);
+
+    var myPlacemark = new ymaps.Placemark(
+      [55.72202, 37.632969],
+      {},
+      {
+        iconLayout: "default#image",
+        iconImageHref: "../../img/location.svg",
+        iconImageSize: [80, 80],
+        iconImageOffset: [-40, -40],
+        iconContentOffset: [0, 0],
+      }
+    );
+
+    myMap.geoObjects.add(myPlacemark);
+  }
+});
+
 function moveTitle() {
   if ($(window).width() < 1024) {
     if (!$(".text-block").hasClass("move-title")) {
