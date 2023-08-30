@@ -3,6 +3,8 @@
   border-bottom: solid 1px $colorSimple;
   position: relative;
   overflow: hidden;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 .grettings-slider {
@@ -312,13 +314,12 @@
   }
 
   .picture {
-    overflow: hidden;
-    @include border-radius(50px);
     position: relative;
     padding-top: calc(400 / 533 * 100%);
     display: block;
     width: 100%;
     height: auto;
+    @include border-radius(50px);
 
     img {
       width: 100%;
@@ -327,6 +328,7 @@
       position: absolute;
       left: 0;
       top: 0;
+      @include border-radius(50px);
     }
   }
 
