@@ -24,6 +24,16 @@ $(document).ready(function () {
       spaceBetween: 0,
       speed: 500,
       loop: true,
+      effect: "creative",
+      creativeEffect: {
+        prev: {
+          shadow: true,
+          translate: ["-20%", 0, -1],
+        },
+        next: {
+          translate: ["100%", 0, 0],
+        },
+      },
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -74,6 +84,11 @@ $(document).ready(function () {
         onClose: function (element) {},
       });
     });
+  }
+
+  if ($(".video-for-slider").length) {
+    $(".video-for-slider").trigger("pause");
+    setVideoMain();
   }
 
   // if ($(".products__slider").length > 0) {
@@ -308,4 +323,23 @@ function moveBtn() {
       textBlock.removeClass("move-btn");
     });
   }
+}
+
+function setVideoMain() {
+  if ($(window).width() < 768) {
+    $(".video-for-slider").map(function () {
+      setVideo($(this), "mobile");
+    });
+  } else {
+    $(".video-for-slider").map(function () {
+      setVideo($(this), "desktop");
+    });
+  }
+}
+
+function setVideo(video, device) {
+  video.trigger("pause");
+  video.find("source");
+  video.attr("src", video.attr(`data-${device}`));
+  video.trigger("load").trigger("play");
 }
