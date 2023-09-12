@@ -1,6 +1,7 @@
 .footer {
   background-color: $colorWhite;
   box-shadow: 0px 0px 12px 0px rgba(111, 111, 111, 0.2);
+  width: 100%;
 }
 
 .footer-top {
@@ -26,10 +27,16 @@
 .footer-top__right {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px 120px;
+  gap: 30px 100px;
   flex: 1;
   width: auto;
   padding-left: 200px;
+
+  .footer-top__col {
+    &:nth-child(1) {
+      width: 25%;
+    }
+  }
 }
 
 .footer-top__col {

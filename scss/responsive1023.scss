@@ -117,4 +117,35 @@
   .contacts-map__block {
     max-width: 100%;
   }
+
+  .freeDesign-block {
+    padding: 10px;
+    gap: 5px;
+    font-size: 18px;
+    line-height: 24px;
+
+    .icon {
+      margin-bottom: -5px;
+    }
+
+    .btn {
+      padding: 15px;
+    }
+  }
+
+  .product-item {
+    padding: 16px;
+    @include border-radius(30px);
+  }
+
+  .product-item .btn--full {
+    border: 0;
+    padding: 0;
+    background-color: transparent !important;
+    color: $colorSite !important;
+  }
+
+  .product-item .picture img {
+    width: 65%;
+  }
 }

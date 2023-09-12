@@ -38,6 +38,7 @@
     background-color: transparent;
     border-color: $colorSite;
     color: $colorSite;
+    border-radius: 50px;
 
     svg {
       path {
@@ -46,6 +47,12 @@
     }
 
     &:hover {
+      background-color: rgba(156, 144, 92, 0.2) !important;
+      border-color: rgba(156, 144, 92, 0.2) !important;
+      color: #9c905c;
+    }
+
+    &:focus {
       background-color: $colorSite !important;
       color: $colorWhite;
 
@@ -59,6 +66,10 @@
 
   &:hover {
     background-color: $colorSiteHover;
+  }
+
+  &:focus {
+    background-color: #6a613a;
   }
 }
 

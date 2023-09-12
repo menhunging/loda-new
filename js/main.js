@@ -86,60 +86,89 @@ $(document).ready(function () {
     });
   }
 
-  if ($(".video-for-slider").length) {
+  if ($(".video-for-slider").length > 0) {
     $(".video-for-slider").trigger("pause");
     setVideoMain();
   }
 
-  // if ($(".products__slider").length > 0) {
-  //   const sliders = document.querySelectorAll(".products__slider");
-  //   let mySwipers = [];
+  if ($(".drop-block").length > 0) {
+    $(".drop-block").map(function () {
+      let block = $(this);
 
-  //   function sliderinit() {
-  //     sliders.forEach((slider, index) => {
-  //       if (!slider.swiper) {
-  //         mySwipers[index] = new Swiper(slider, {
-  //           slidesPerView: 4,
-  //           spaceBetween: 32,
-  //           navigation: {
-  //             nextEl: ".swiper-button-next",
-  //             prevEl: ".swiper-button-prev",
-  //           },
-  //           on: {
-  //             init: function (swiper) {},
-  //             slideChange: function (swiper) {},
-  //           },
-  //           breakpoints: {
-  //             320: {
-  //               slidesPerView: 1,
-  //               spaceBetween: 16,
-  //             },
-  //             350: {
-  //               slidesPerView: 2,
-  //               spaceBetween: 16,
-  //             },
-  //             740: {
-  //               slidesPerView: 3,
-  //             },
-  //             1024: {
-  //               slidesPerView: 4,
-  //             },
-  //             1200: {
-  //               slidesPerView: 4,
-  //             },
-  //             1441: {
-  //               slidesPerView: 4.68,
-  //             },
-  //           },
-  //         });
-  //       } else {
-  //         return;
-  //       }
-  //     });
-  //   }
+      block.on("click", function () {
+        let list = block.find(".drop-block__list");
 
-  //   sliders.length && sliderinit();
-  // }
+        if (!block.hasClass("opened")) {
+          $(".drop-block__list").stop().slideUp();
+          list.stop().slideDown();
+        } else {
+          $(".drop-block__list").stop().slideUp();
+        }
+
+        block.toggleClass("opened");
+
+        $(document).off("mouseup");
+
+        $(document).mouseup(function (e) {
+          if (!block.is(e.target) && block.has(e.target).length === 0) {
+            $(".drop-block__list").stop().slideUp();
+            block.removeClass("opened");
+          }
+        });
+      });
+    });
+  }
+
+  if ($(".slider-simple").length > 0) {
+    const sliders = document.querySelectorAll(".slider-simple");
+    let mySwipers = [];
+
+    function sliderinit() {
+      sliders.forEach((slider, index) => {
+        if (!slider.swiper) {
+          mySwipers[index] = new Swiper(slider, {
+            slidesPerView: 4,
+            spaceBetween: 42,
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+              el: ".swiper-pagination",
+            },
+            on: {
+              init: function (swiper) {},
+              slideChange: function (swiper) {},
+            },
+            breakpoints: {
+              320: {
+                slidesPerView: 1,
+              },
+              480: {
+                slidesPerView: 2,
+                spaceBetween: 16,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+              1280: {
+                slidesPerView: 4,
+                spaceBetween: 22,
+              },
+              1600: {
+                slidesPerView: 4,
+              },
+            },
+          });
+        } else {
+          return;
+        }
+      });
+    }
+
+    sliders.length && sliderinit();
+  }
 
   // ---------------------------------------
 
@@ -203,8 +232,10 @@ $(window).on("resize", function () {
 });
 
 $(window).on("load", function () {
-  setTimeout(() => ymapsLoad(), 500);
-  setTimeout(() => ymaps.ready(init), 1000);
+  if ($(".map").length > 0) {
+    setTimeout(() => ymapsLoad(), 500);
+    setTimeout(() => ymaps.ready(init), 1000);
+  }
 
   function ymapsLoad() {
     var script = document.createElement("script");
