@@ -127,8 +127,8 @@ $(document).ready(function () {
       sliders.forEach((slider, index) => {
         if (!slider.swiper) {
           mySwipers[index] = new Swiper(slider, {
-            slidesPerView: 4,
-            spaceBetween: 42,
+            slidesPerView: 5,
+            spaceBetween: 40,
             navigation: {
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
@@ -141,7 +141,7 @@ $(document).ready(function () {
               slideChange: function (swiper) {},
             },
             breakpoints: {
-              320: {
+              0: {
                 slidesPerView: 1,
               },
               480: {
@@ -150,11 +150,10 @@ $(document).ready(function () {
               },
               1024: {
                 slidesPerView: 3,
-                spaceBetween: 20,
               },
               1280: {
                 slidesPerView: 4,
-                spaceBetween: 22,
+                spaceBetween: 20,
               },
               1600: {
                 slidesPerView: 4,
@@ -170,55 +169,133 @@ $(document).ready(function () {
     sliders.length && sliderinit();
   }
 
-  // ---------------------------------------
+  if ($(".products-simple").length > 0) {
+    const sliders = document.querySelectorAll(".products-simple");
+    let mySwipers = [];
 
-  // if ($(".phoneInput").length > 0) {
-  //   $(".phoneInput").map(function () {
-  //     $(this).inputmask({
-  //       mask: "+7(999) 999-99-99",
-  //       placeholder: "*",
-  //       showMaskOnHover: false,
-  //       showMaskOnFocus: true,
-  //       clearIncomplete: true,
-  //     });
-  //   });
-  // }
+    function sliderinit() {
+      sliders.forEach((slider, index) => {
+        if (!slider.swiper) {
+          mySwipers[index] = new Swiper(slider, {
+            slidesPerView: 4,
+            spaceBetween: 42,
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+              el: ".swiper-pagination",
+            },
+            on: {
+              init: function (swiper) {},
+              slideChange: function (swiper) {},
+            },
+            breakpoints: {
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 16,
+              },
+              390: {
+                slidesPerView: 2,
+                spaceBetween: 16,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+              1280: {
+                slidesPerView: 4,
+                spaceBetween: 22,
+              },
+              1600: {
+                slidesPerView: 5,
+              },
+            },
+          });
+        } else {
+          return;
+        }
+      });
+    }
 
-  // if ($(".modal").length > 0) {
-  //   MicroModal.init({
-  //     openTrigger: "data-modal",
-  //     disableScroll: true,
-  //     awaitOpenAnimation: true,
-  //     awaitCloseAnimation: true,
+    sliders.length && sliderinit();
+  }
 
-  //     onShow: () => {
-  //       $("body").addClass("modal-open");
-  //     },
+  if ($(".phone-input").length > 0) {
+    $(".phone-input").map(function () {
+      $(this).inputmask({
+        mask: "+7(999) 999-99-99",
+        placeholder: "*",
+        showMaskOnHover: false,
+        showMaskOnFocus: true,
+        clearIncomplete: true,
+      });
+    });
+  }
 
-  //     onClose: () => {
-  //       $("body").removeClass("modal-open");
-  //     },
-  //   });
+  if ($("[data-fancybox]").length > 0) {
+    Fancybox.bind("[data-fancybox]", {
+      speedIn: 600,
+      speedOut: 600,
+    });
+  }
 
-  //   $("[data-modal]").map(function () {
-  //     $(this).click((e) => e.preventDefault());
-  //   });
-  // }
+  if ($(".tabs").length > 0) {
+    $(".tabs").tabslet({
+      mouseevent: "click",
+      attribute: "href",
+      animation: true,
+    });
+  }
 
-  // if ($(".tabs").length > 0) {
-  //   $(".tabs").tabslet({
-  //     mouseevent: "click",
-  //     attribute: "href",
-  //     animation: true,
-  //   });
-  // }
+  if ($(".modal").length > 0) {
+    MicroModal.init({
+      openTrigger: "data-modal",
+      disableScroll: true,
+      awaitOpenAnimation: true,
+      awaitCloseAnimation: true,
 
-  // if ($(".linkFancyBox").length > 0) {
-  //   Fancybox.bind("[data-fancybox]", {
-  //     speedIn: 600,
-  //     speedOut: 600,
-  //   });
-  // }
+      onShow: () => {
+        $("body").addClass("modal-open");
+      },
+
+      onClose: () => {
+        setTimeout(() => {
+          $("body").removeClass("modal-open");
+        }, 300);
+      },
+    });
+
+    $("[data-modal]").map(function () {
+      $(this).click((e) => e.preventDefault());
+    });
+  }
+
+  if ($(".count-block").length > 0) {
+    $(".count-block").map(function () {
+      let plus = $(this).find(".count-plus");
+      let minus = $(this).find(".count-minus");
+      let input = $(this).find(".input-count");
+      let count = $(this).find(".input-count").val();
+
+      plus.on("click", function (e) {
+        e.preventDefault();
+        count++;
+        input.val(count);
+      });
+
+      minus.on("click", function (e) {
+        e.preventDefault();
+        count--;
+
+        if (count < 0) {
+          count = 0;
+        }
+
+        input.val(count);
+      });
+    });
+  }
 });
 
 $(window).on("resize", function () {
@@ -373,4 +450,19 @@ function setVideo(video, device) {
   video.find("source");
   video.attr("src", video.attr(`data-${device}`));
   video.trigger("load").trigger("play");
+}
+
+function openModal(modal) {
+  MicroModal.show(modal);
+  $(".modal__close").on("click", function () {
+    closeModal(modal);
+  });
+  $("body").addClass("modal-open");
+}
+
+function closeModal(modal) {
+  MicroModal.close(modal);
+  setTimeout(() => {
+    $("body").removeClass("modal-open");
+  }, 300);
 }

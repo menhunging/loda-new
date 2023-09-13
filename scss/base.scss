@@ -534,19 +534,20 @@ picture {
     right: auto;
     bottom: auto;
     left: auto;
-    margin: 0;
-    opacity: 1 !important;
-    width: 24px;
-    height: 24px;
-    @include transition(all 0.3s);
-    background: transparent;
+  }
+}
 
-    &:after {
-      display: none;
-    }
+.swiper-button-prev,
+.swiper-button-next {
+  margin: 0;
+  opacity: 1 !important;
+  width: 24px;
+  height: 24px;
+  @include transition(all 0.3s);
+  background: transparent;
 
-    &:hover {
-    }
+  &:after {
+    display: none;
   }
 }
 
@@ -582,4 +583,11 @@ picture {
   display: block;
   pointer-events: none;
   @include transition(all 0.3s);
+}
+
+input[type="number"],
+input[type="number"]:hover,
+input[type="number"]:focus {
+  appearance: none;
+  -moz-appearance: textfield;
 }

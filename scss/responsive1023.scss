@@ -146,6 +146,46 @@
   }
 
   .product-item .picture img {
-    width: 65%;
+  }
+
+  .card-characteristics {
+    padding: 8px 20px;
+  }
+
+  .basket-table .thead .td {
+    font-size: 12px;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+
+  .input-count {
+    height: 40px;
+    padding-left: 0;
+    width: 50px;
+    font-size: 18px;
+  }
+
+  .basket-table .picture {
+    width: 100px;
+    height: 100px;
+  }
+
+  .basket {
+    .send-form {
+      margin-top: 14px;
+      gap: 16px;
+
+      .input-item {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+
+  .basket-result {
+    margin-top: 14px;
   }
 }

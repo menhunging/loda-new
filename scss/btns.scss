@@ -17,9 +17,10 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 16px;
+  padding: 15px 16px;
   background-color: $colorSite;
 
+  svg,
   &__icon {
     fill: $colorWhite;
     width: 24px;
