@@ -711,10 +711,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-
-      & + .tr {
-        border-top: solid 1px $colorBlack;
-      }
+      border-bottom: solid 1px $colorBlack;
     }
 
     .td {
@@ -741,5 +738,10 @@
 
   .basket-result {
     margin-top: 0;
+  }
+
+  .price-block {
+    font-size: 18px;
+    line-height: 24px;
   }
 }

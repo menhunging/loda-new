@@ -4458,9 +4458,7 @@ input[type=number]:focus {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  .basket-table .tr + .tr {
-    border-top: solid 1px rgb(0, 0, 0);
+    border-bottom: solid 1px rgb(0, 0, 0);
   }
   .basket-table .td {
     width: 100%;
@@ -4481,6 +4479,10 @@ input[type=number]:focus {
   }
   .basket-result {
     margin-top: 0;
+  }
+  .price-block {
+    font-size: 18px;
+    line-height: 24px;
   }
 }
 @media (max-width: 639px) {
